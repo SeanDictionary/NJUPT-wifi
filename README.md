@@ -38,13 +38,14 @@ The file will return outputs to check whether the connection is successful.
 
 Here are some outputs.
 
-| Outputs                                                                   |             Meanings             | Status |
-| ------------------------------------------------------------------------- | :-------------------------------: | :----: |
-| Generated account.json.Change the information.                            | complete the config and run again |   ⭕   |
-| dr1003({"result":0,"msg":"AC999","ret_code":2});                          |          have connected          |   ❌   |
-| dr1003({"result":0,"msg":"从Radius获取错误代码出现异常！","ret_code":1}); |            mode wrong            |   ❌   |
-| dr1003({"result":0,"msg":"账号或密码错误(ldap校验)","ret_code":1});       |     account or password wrong     |   ❌   |
-| dr1003({"result":1,"msg":"Portal协议认证成功！"});                        |       successfully connect       |   ✔   |
+| Outputs                                                                                |             Meanings             | Status |
+| -------------------------------------------------------------------------------------- | :-------------------------------: | :----: |
+| Generated account.json.Change the information.                                         | complete the config and run again |   ⭕   |
+| dr1003({"result":0,"msg":"AC999","ret_code":2});                                       |          have connected          |   ❌   |
+| dr1003({"result":0,"msg":"从Radius获取错误代码出现异常！","ret_code":1});              |            mode wrong            |   ❌   |
+| dr1003({"result":0,"msg":"账号或密码错误(ldap校验)","ret_code":1});                    |     account or password wrong     |   ❌   |
+| ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None))) |        turn off your proxy        |   ❌   |
+| dr1003({"result":1,"msg":"Portal协议认证成功！"});                                     |       successfully connect       |   ✔   |
 
 ## Others
 
