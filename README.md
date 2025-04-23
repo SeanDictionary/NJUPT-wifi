@@ -4,9 +4,11 @@ It's a tool to login NJUPT wifi.
 
 ## How to use
 
+❗ Warning: If you are using a proxy,remember to add `p.njupt.edu.cn` to the proxy whitelist.
+
 Download the realse edition and double-click to run the file.
 
-If it's the first time to run the file.It will generate a config file `account.json` under the current path.Remember to change the details in config file.
+If it's the first time to run the file.It will generate a config file `account.json` under the current path.Remember to change the details in config file.(Next session is about how to set the config.)
 
 When you move the file,remember to move the config together.
 
@@ -20,7 +22,8 @@ the account.json will as the follow.
 {
     "account": "account",
     "mode": "mode",
-    "password": "password"
+    "password": "password",
+    "step": 5
 }
 ```
 
@@ -32,6 +35,8 @@ mode → "cmcc"(移动)/"njxy"(电信)/""(校园网)
 
 password → "your password"
 
+Step: It's the time interval between two connections, default is 5 seconds.
+
 ## Outputs
 
 The file will return outputs to check whether the connection is successful.
@@ -41,12 +46,12 @@ Here are some outputs.
 | Outputs                                                                                                                                                                           |             Meanings             | Status |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------: | :----: |
 | Generated account.json.Change the information.                                                                                                                                    | complete the config and run again |   ⭕   |
-| dr1003({"result":0,"msg":"AC999","ret_code":2});                                                                                                                                  |          have connected          |   ❌   |
-| dr1003({"result":0,"msg":"从Radius获取错误代码出现异常！","ret_code":1});                                                                                                         |            mode wrong            |   ❌   |
-| dr1003({"result":0,"msg":"账号或密码错误(ldap校验)","ret_code":1});                                                                                                               |     account or password wrong     |   ❌   |
+| dr1003({"result":0,"msg":"AC999","ret_code":2});                                                                                                                                  |        already connected        |   ✔   |
+| dr1003({"result":0,"msg":"从 Radius 获取错误代码出现异常！","ret_code":1});                                                                                                       |            mode wrong            |   ❌   |
+| dr1003({"result":0,"msg":"账号或密码错误(ldap 校验)","ret_code":1});                                                                                                              |     account or password wrong     |   ❌   |
 | ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None)))                                                                                            |        turn off your proxy        |   ❌   |
 | (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x00000239E5903A00>:<br /> Failed to establish a new connection: [Errno 11001] getaddrinfo failed')) |     connect the correct wifi     |   ❌   |
-| dr1003({"result":1,"msg":"Portal协议认证成功！"});                                                                                                                                |       successfully connect       |   ✔   |
+| dr1003({"result":1,"msg":"Portal 协议认证成功！"});                                                                                                                               |       successfully connect       |   ✔   |
 
 ## Others
 
