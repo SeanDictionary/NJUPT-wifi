@@ -1,6 +1,8 @@
 # NJUPT-wifi
 
-It's a tool to login NJUPT wifi.
+![Version](https://img.shields.io/badge/version-V1.1-blue) ![Platform](https://img.shields.io/badge/platform-Windows-green) ![License](https://img.shields.io/github/license/你的用户名/你的仓库名)
+
+It's a tool to auto login NJUPT wifi.
 
 ## How to use
 
@@ -39,7 +41,7 @@ Step: It's the time interval between two connections, default is 5 seconds.
 
 ## Outputs
 
-The file will return outputs to check whether the connection is successful.
+The file will return outputs in log to check whether the connection is successful.
 
 Here are some outputs.
 
@@ -52,6 +54,14 @@ Here are some outputs.
 | ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None)))                                                                                            |        turn off your proxy        |   ❌   |
 | (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x00000239E5903A00>:<br /> Failed to establish a new connection: [Errno 11001] getaddrinfo failed')) |     connect the correct wifi     |   ❌   |
 | dr1003({"result":1,"msg":"Portal 协议认证成功！"});                                                                                                                               |       successfully connect       |   ✔   |
+
+## Builds
+
+Under the path, use `pyinstaller` to build the file.
+
+```bash
+pyinstaller --onefile --noconsole --clean --hidden-import plyer.platforms.win.notification wifi.py
+```
 
 ## Others
 
