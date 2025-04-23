@@ -8,13 +8,15 @@ It's a tool to auto login NJUPT wifi.
 
 ❗ Warning: If you are using a proxy,remember to add `p.njupt.edu.cn` to the proxy whitelist.
 
-Download the realse edition and double-click to run the file.
+1. Download the realse edition and double-click to run the file.
 
-If it's the first time to run the file.It will generate a config file `account.json` under the current path.Remember to change the details in config file.(Next session is about how to set the config.)
+2. If it's the first time to run the file.It will generate a config file `account.json` 和 `wifi.log` under the current path.Remember to change the details in config file.(Next session is about how to set the config.)
 
-When you move the file,remember to move the config together.
+⭕ Tips: When you move the file,remember to move the config together.
 
-After setting sonfig,run the file will try to connect NJUPT wifi.
+3. After setting config,run the file will try to connect NJUPT wifi.If it connected there will be a System notification
+
+⭕ Tips: If you want to exit the software,please use TaskManager.
 
 ## Setting
 
@@ -31,13 +33,15 @@ the account.json will as the follow.
 
 Replace
 
-account → "your account"
+1. account → "your account"
 
-mode → "cmcc"(移动)/"njxy"(电信)/""(校园网)
+2. mode → "cmcc"(移动)/"njxy"(电信)/""(校园网)
 
-password → "your password"
+3. password → "your password"
 
-Step: It's the time interval between two connections, default is 5 seconds.
+4. Step: It's the time interval between two connections, default is 5 seconds.
+
+If you want use/change other parameters please rebuild the file.
 
 ## Outputs
 
@@ -65,4 +69,4 @@ pyinstaller --onefile --noconsole --clean --hidden-import plyer.platforms.win.no
 
 ## Others
 
-Welcome issues and PRs.
+Welcome Issues and PRs.
