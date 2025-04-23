@@ -1,6 +1,6 @@
 # NJUPT-wifi
 
-![Version](https://img.shields.io/badge/version-V1.1-blue) ![Platform](https://img.shields.io/badge/platform-Windows-green) ![License](https://img.shields.io/github/license/你的用户名/你的仓库名)
+![Version](https://img.shields.io/badge/version-V1.1-blue) ![Platform](https://img.shields.io/badge/platform-Windows-green) ![License](https://img.shields.io/github/license/SeanDictionary/NJUPT-wifi)
 
 It's a tool to auto login NJUPT wifi.
 
