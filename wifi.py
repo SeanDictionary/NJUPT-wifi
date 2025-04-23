@@ -100,6 +100,15 @@ def fetch_url_content(url):
         if "AC999" in response.text or "Portal协议认证成功！" in response.text:
             logger.info("[+] Connected NJUPT")
             notify(title="NJUPT校园网", msg="已成功连接NJUPT校园网")
+        elif "当前时间禁止上网" in response.text:
+            logger.warning("[-] Current time is not allowed to login to the internet.")
+            while True:
+                current = time.localtime()
+                if current.tm_hour >= 7 and current.tm_hour <= 23:
+                    logger.info("[+] Current time is allowed to login to the internet.")
+                    break
+                else:
+                    time.sleep(60)
         else:
             logger.error("[-] Authentication failed. Please check your account and password.")
             notify(title="NJUPT校园网", msg="登陆信息出错\n请检查json文件中的账号和密码确保正确\n并重新运行")
