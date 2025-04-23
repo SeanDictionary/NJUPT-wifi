@@ -104,7 +104,7 @@ def fetch_url_content(url):
             logger.warning("[-] Current time is not allowed to login to the internet.")
             while True:
                 current = time.localtime()
-                if current.tm_hour >= 7 and current.tm_hour <= 23:
+                if current.tm_hour >= 7 and current.tm_hour < 23:
                     logger.info("[+] Current time is allowed to login to the internet.")
                     break
                 else:
