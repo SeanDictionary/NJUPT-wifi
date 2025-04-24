@@ -1,4 +1,5 @@
 # NJUPT-wifi
+
 ![Release](https://img.shields.io/github/v/release/SeanDictionary/NJUPT-wifi) ![Platform](https://img.shields.io/badge/platform-Windows-green) ![License](https://img.shields.io/github/license/SeanDictionary/NJUPT-wifi) ![Built with Python](https://img.shields.io/badge/Built%20with-Python-blue?logo=python)
 
 It's a tool to auto login NJUPT wifi.
@@ -60,7 +61,9 @@ Here are some outputs.
 
 ## Builds
 
-Under the path, use `pyinstaller` to build the file.
+If you want to build the file by yourself, please make sure you have installed the following packages.
+
+And use `pyinstaller` and following command to build the file.
 
 ```bash
 pyinstaller --onefile --noconsole --clean --hidden-import plyer.platforms.win.notification wifi.py
