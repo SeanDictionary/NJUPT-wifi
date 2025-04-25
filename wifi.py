@@ -102,7 +102,7 @@ def fetch_url_content(url):
             notify(title="NJUPT校园网", msg="已成功连接NJUPT校园网")
         elif "AC999" in response.text:
             logger.info("[+] Already Connected NJUPT")
-            notify(title="NJUPT校园网", msg="正在使用NJUPT校园网")
+            # notify(title="NJUPT校园网", msg="正在使用NJUPT校园网")
         elif "当前时间禁止上网" in response.text:
             logger.warning("[-] Current time is not allowed to login to the internet.")
             while True:
