@@ -97,9 +97,12 @@ def fetch_url_content(url):
     try:
         response = requests.get(url, proxies={})
         logger.info(f"[+] Login Response: {response.text}")
-        if "AC999" in response.text or "Portal协议认证成功！" in response.text:
+        if "Portal协议认证成功！" in response.text:
             logger.info("[+] Connected NJUPT")
             notify(title="NJUPT校园网", msg="已成功连接NJUPT校园网")
+        elif "AC999" in response.text:
+            logger.info("[+] Already Connected NJUPT")
+            notify(title="NJUPT校园网", msg="正在使用NJUPT校园网")
         elif "当前时间禁止上网" in response.text:
             logger.warning("[-] Current time is not allowed to login to the internet.")
             while True:
