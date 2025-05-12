@@ -55,7 +55,7 @@ def whether_using_njupt_ethernet():
     return False
 
 
-def test(url="https://www.baidu.com/",timeout=1):
+def test(url="https://www.baidu.com/",timeout=2):
     try:
         response = requests.get(url, timeout=timeout, proxies={})
         code = response.status_code
@@ -147,6 +147,7 @@ if __name__ == "__main__":
     
     logger.info("[+] ===================START===================")
     logger.info("[+] Start NJUPT Auto Login Script")
+    notify(title="NJUPT校园网", msg="校园网自动登陆服务启动")
     while True:
         try:
             account, mode, password, step = load_json()
@@ -173,4 +174,8 @@ if __name__ == "__main__":
                             logger.info(f"[-] Connecting Wifi {wifi_name} Error: {e}")
                             notify(title="NJUPT校园网", msg=f"连接Wifi {wifi_name} 时出错\n详细查看日志文件")
                     fetch_url_content(url)
+            else:
+                # if not in NJUPT wifi environment, sleep for 1 hrs
+                logger.info("[-] Not in NJUPT wifi environment.")
+                time.sleep(60*60)
         time.sleep(step)
