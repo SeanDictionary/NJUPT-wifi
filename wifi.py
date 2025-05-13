@@ -55,12 +55,12 @@ def whether_using_njupt_ethernet():
     return False
 
 
-def test(url="https://www.baidu.com/",timeout=2):
+def test(url="http://connectivitycheck.platform.hicloud.com/generate_204	",timeout=2):
     try:
         response = requests.get(url, timeout=timeout, proxies={})
         code = response.status_code
-        if code == 200:
-            logger.info("[+] State code: 200")
+        if code == 204:
+            logger.info("[+] State code: 204")
             return True
         else:
             logger.warning(f"[+] State code: {code}")
