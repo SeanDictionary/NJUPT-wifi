@@ -46,8 +46,8 @@ def check_version():
             html_url = data["html_url"]
             if version.parse(get_version.strip("V")) > VERSION:
                 pyperclip.copy(html_url)
-                logger.info(f"[+] New version {version} available. Update URL {html_url}.")
-                notify(title="NJUPT校园网", msg=f"发现新版本 {version}\n更新地址已复制到剪贴板")
+                logger.info(f"[+] New version {get_version} available. Update URL {html_url}.")
+                notify(title="NJUPT校园网", msg=f"发现新版本 {get_version}\n更新地址已复制到剪贴板")
         else:
             logger.warning(f"[-] Connect to Github API Error with State code: {response.status_code}")
     except Exception as e:
