@@ -39,7 +39,7 @@ Replace
 
 3. password → "your password"
 
-4. Step: It's the time interval between two connections, default is 5 seconds.
+4. Step: It's the time interval between two connections, default is 5 seconds.(It's not essential)
 
 If you want use/change other parameters please rebuild the file.
 

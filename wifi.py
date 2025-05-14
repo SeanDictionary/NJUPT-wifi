@@ -21,6 +21,12 @@ import os
 
 VERSION = version.parse("1.2")
 REPO = "SeanDictionary/NJUPT-wifi"
+default_set = """{
+    "account": "account",
+    "mode": "mode",
+    "password": "password",
+    "sleep": 5
+}"""
 
 
 def notify(title, msg, duration=8):
@@ -162,13 +168,6 @@ if __name__ == "__main__":
     logger = logging.getLogger()
     logger.setLevel(logging.INFO)
     logger.addHandler(log_handler)
-
-    default_set = """{
-    "account": "account",
-    "mode": "mode",
-    "password": "password",
-    "sleep": 5
-}"""
     
     logger.info(f"[+] ===================START VERSION {VERSION}===================")
     logger.info("[+] Start NJUPT Auto Login Script")
