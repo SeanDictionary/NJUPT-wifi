@@ -1,4 +1,4 @@
-# pyinstaller --onefile --noconsole --clean --hidden-import plyer.platforms.win.notification wifi.py
+# pyinstaller --onefile --noconsole --clean --hidden-import plyer.platforms.win.notification wifi.py --icon=icon.ico
 #    _____ ______          _   _ _____ _____ _____ _______ _____ ____  _   _          _______     __
 #   / ____|  ____|   /\   | \ | |  __ \_   _/ ____|__   __|_   _/ __ \| \ | |   /\   |  __ \ \   / /
 #  | (___ | |__     /  \  |  \| | |  | || || |       | |    | || |  | |  \| |  /  \  | |__) \ \_/ / 
