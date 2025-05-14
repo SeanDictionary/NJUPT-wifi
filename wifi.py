@@ -6,7 +6,6 @@
 #   ____) | |____ / ____ \| |\  | |__| || || |____   | |   _| || |__| | |\  |/ ____ \| | \ \  | |   
 #  |_____/|______/_/    \_\_| \_|_____/_____\_____|  |_|  |_____\____/|_| \_/_/    \_\_|  \_\ |_| 
 # Designed by SeanDictionary
-# V1.1
 
 import logging
 from logging.handlers import RotatingFileHandler
@@ -15,13 +14,39 @@ import json
 import subprocess
 import time
 from plyer import notification
+from packaging import version
+import pyperclip
 import os
 
-def notify(title, msg, duration=5):
+
+VERSION = version.parse("1.2")
+REPO = "SeanDictionary/NJUPT-wifi"
+
+
+def notify(title, msg, duration=8):
     try:
-        notification.notify(title=title, message=msg, timeout=8)
+        notification.notify(title=title, message=msg, timeout=duration)
     except Exception as e:
         logger.error(f"[-] Notify Error: {e}")
+
+
+def check_version():
+    url = f"https://api.github.com/repos/{REPO}/releases/latest"
+    try:
+        response = requests.get(url, proxies={"http": None, "https": None}, timeout=1)
+        if response.status_code == 200:
+            data = response.json()
+            version = data["tag_name"]
+            html_url = data["html_url"]
+            if version.parse(version.strip("V")) > VERSION:
+                pyperclip.copy(html_url)
+                logger.info(f"[+] New version {version} available. Update URL {html_url}.")
+                notify(title="NJUPT校园网", msg=f"发现新版本 {version}\n更新地址已复制到剪贴板")
+        else:
+            logger.warning(f"[-] Connect to Github API Error with State code: {response.status_code}")
+    except Exception as e:
+        logger.warning(f"[-] Check Version Error: {e}")
+
 
 def scan_wifi():
     result_bytes = subprocess.check_output(
@@ -55,7 +80,7 @@ def whether_using_njupt_ethernet():
     return False
 
 
-def test(url="http://connectivitycheck.platform.hicloud.com/generate_204	",timeout=2):
+def test(url="http://connectivitycheck.platform.hicloud.com/generate_204",timeout=1):
     try:
         response = requests.get(url, timeout=timeout, proxies={})
         code = response.status_code
@@ -100,6 +125,7 @@ def fetch_url_content(url):
         if "Portal协议认证成功！" in response.text:
             logger.info("[+] Connected NJUPT")
             notify(title="NJUPT校园网", msg="已成功连接NJUPT校园网")
+            check_version()
         elif "AC999" in response.text:
             logger.info("[+] Already Connected NJUPT")
             # notify(title="NJUPT校园网", msg="正在使用NJUPT校园网")
@@ -122,7 +148,6 @@ def fetch_url_content(url):
 
 
 if __name__ == "__main__":
-
     log_handler = RotatingFileHandler(
         filename='wifi.log',
         mode='a',
@@ -145,7 +170,7 @@ if __name__ == "__main__":
     "sleep": 5
 }"""
     
-    logger.info("[+] ===================START===================")
+    logger.info(f"[+] ===================START VERSION {VERSION}===================")
     logger.info("[+] Start NJUPT Auto Login Script")
     notify(title="NJUPT校园网", msg="校园网自动登陆服务启动")
     while True:
@@ -155,7 +180,7 @@ if __name__ == "__main__":
             continue
         url = f"https://p.njupt.edu.cn:802/eportal/portal/login?callback=dr1003&login_method=1&user_account=%2C0%2C{account}{mode}&user_password={password}"
 
-        if not any(test() for _ in range(5)):
+        if not any(test() for _ in range(1)):
             wifi_list = scan_wifi()
             if {"NJUPT","NJUPT-CMCC","NJUPT-CHINANET"} & set(wifi_list):
                 logger.info("[+] NJUPT wifi environment detected.")
