@@ -42,9 +42,9 @@ def check_version():
         response = requests.get(url, proxies={"http": None, "https": None}, timeout=1)
         if response.status_code == 200:
             data = response.json()
-            version = data["tag_name"]
+            get_version = data["tag_name"]
             html_url = data["html_url"]
-            if version.parse(version.strip("V")) > VERSION:
+            if version.parse(get_version.strip("V")) > VERSION:
                 pyperclip.copy(html_url)
                 logger.info(f"[+] New version {version} available. Update URL {html_url}.")
                 notify(title="NJUPT校园网", msg=f"发现新版本 {version}\n更新地址已复制到剪贴板")
